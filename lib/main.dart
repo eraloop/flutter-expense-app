@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'FExpense App',
       theme: ThemeData(
         primarySwatch: Colors.purple,
+        errorColor:  Colors.red,
         accentColor: Colors.amber,
         fontFamily:'Quicksand',
         appBarTheme: AppBarTheme(
@@ -26,6 +27,9 @@ class MyApp extends StatelessWidget {
            headline1: TextStyle(
              fontFamily: 'OpenSans',
               fontSize: 20,
+         ),
+         button: TextStyle(
+           color: Colors.white
          )
         
          )
@@ -68,11 +72,11 @@ class _HomepageState extends State<Homepage> {
  }
 
 
-  void _addNewTransaction(String title, double amount) {
+  void _addNewTransaction(String title, double amount, DateTime  choosenDate) {
     final newTx = Transaction(
         title: title,
         amount: amount,
-        date: DateTime.now(),
+        date:   choosenDate,
         id: DateTime.now().toString());
 
     setState(() {
@@ -90,6 +94,14 @@ class _HomepageState extends State<Homepage> {
           behavior: HitTestBehavior.opaque
         );
       },);
+  }
+
+  void _deleteTransaction(String id){
+    setState(() {
+      _userTransactions.removeWhere((tx){
+        return tx.id == id;
+      });
+    });
   }
 
   @override
@@ -113,7 +125,7 @@ class _HomepageState extends State<Homepage> {
                   Chart(_recentTransactions)
 
             ),
-           TransactionList(_userTransactions)],
+           TransactionList(_userTransactions, _deleteTransaction) ],
          
         )),
 
