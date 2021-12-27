@@ -49,20 +49,7 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
 
-    final List<Transaction> _userTransactions = [
-    // Transaction(
-    //   id: 't1',
-    //   title: 'new shoes',
-    //   amount: 69.99,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: 't2',
-    //   title: 'some tshirts',
-    //   amount: 300.67,
-    //   date: DateTime.now(),
-    // )
-  ];
+    final List<Transaction> _userTransactions = [];
 
   List<Transaction> get _recentTransactions {
     return _userTransactions.where((tx) {
@@ -128,8 +115,6 @@ class _HomepageState extends State<Homepage> {
            TransactionList(_userTransactions, _deleteTransaction) ],
          
         )),
-
-
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: FloatingActionButton(onPressed:()=> _startAddNewTransaction(context),
         child: Icon(Icons.add)),
