@@ -13,27 +13,30 @@ class TransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 450,
+        height: MediaQuery.of(context).size.height * 0.6,
         child: transactions.isEmpty
-            ? Center(
+            ? LayoutBuilder(builder: (ctx, constraint){
+              return  Center(
                 child: Column(
                   children: <Widget>[
                     Text(
                       "No Transaction added yet",
-                      style: Theme.of(context).textTheme.caption,
+                      style: Theme.of(context).textTheme.headline6,
                     ),
                     const SizedBox(
                       height: 10,
                     ),
                     Container(
-                        height: 200,
+                        height: constraint.maxHeight * 0.8,
                         child: Image.asset(
                           "assets/images/waiting.jpg",
                           fit: BoxFit.cover,
                         ))
                   ],
                 ),
-              )
+              );
+            })
+           
             : ListView(
                 children: transactions.map((tx) {
                   return Card(
@@ -52,7 +55,16 @@ class TransactionList extends StatelessWidget {
                             style: Theme.of(context).textTheme.headline6,
                           ),
                           subtitle: Text(DateFormat.yMMMd().format(tx.date)),
-                          trailing: IconButton(
+                          trailing: 
+                          MediaQuery.of(context).size.width > 360 ? 
+                          FlatButton.icon(
+                            icon: Icon(Icons.delete),
+                            textColor: Theme.of(context).errorColor,
+                            label: Text("Delete"),
+                            onPressed: ()=> deleteTx(tx.id),
+                            )
+                        
+                          : IconButton(
                             onPressed: ()=> deleteTx(tx.id),
                               icon: Icon(Icons.delete),
                               color: Theme.of(context).errorColor)));
