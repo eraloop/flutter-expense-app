@@ -19,6 +19,9 @@ class TransactionList extends StatelessWidget {
               return  Center(
                 child: Column(
                   children: <Widget>[
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.05,
+                    ),
                     Text(
                       "No Transaction added yet",
                       style: Theme.of(context).textTheme.headline6,
@@ -27,7 +30,7 @@ class TransactionList extends StatelessWidget {
                       height: 10,
                     ),
                     Container(
-                        height: constraint.maxHeight * 0.8,
+                        height: constraint.maxHeight * 0.6,
                         child: Image.asset(
                           "assets/images/waiting.jpg",
                           fit: BoxFit.cover,

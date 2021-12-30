@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'FExpense App',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.purple,
         errorColor:  Colors.red,
