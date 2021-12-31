@@ -1,4 +1,6 @@
 
+// ignore_for_file: deprecated_member_use
+
 import 'dart:io';
 
 import 'package:expenseapp/widgets/new_transaction.dart';
@@ -21,10 +23,8 @@ import './widgets/chart.dart';
 //   runApp(const MyApp());
 // }
 
-void main() {
-  runApp(const MyApp());
-}
-  
+void main() => runApp(const MyApp());
+
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -40,18 +40,18 @@ class MyApp extends StatelessWidget {
         fontFamily:'Quicksand',
         appBarTheme: AppBarTheme(
          textTheme: ThemeData.light().textTheme.copyWith(
-           headline1: TextStyle(
+           headline1:const TextStyle(
              fontFamily: 'OpenSans',
               fontSize: 20,
          ),
-         button: TextStyle(
+         button: const TextStyle(
            color: Colors.white
          )
         
          )
       ),
       ),
-      home: Homepage(),
+      home: const Homepage(),
     );
   }
 }
@@ -73,7 +73,7 @@ class _HomepageState extends State<Homepage> {
   List<Transaction> get _recentTransactions {
     return _userTransactions.where((tx) {
         assert(tx != null);
-        return tx.date.isAfter(DateTime.now().subtract(Duration(days: 7),),);
+        return tx.date.isAfter(DateTime.now().subtract(const Duration(days: 7),),);
     }).toList();
  }
 
@@ -118,7 +118,7 @@ class _HomepageState extends State<Homepage> {
     final appBar = AppBar(
           title: const Text("Expense App", style: TextStyle(fontFamily: 'OPenSans'),),
           actions: [
-            IconButton(icon: Icon(Icons.add),
+            IconButton(icon: const Icon(Icons.add),
             onPressed:()=> _startAddNewTransaction(context),)
           ],
         );
@@ -168,7 +168,7 @@ class _HomepageState extends State<Homepage> {
         )),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: Platform.isIOS ? Container() :  FloatingActionButton(onPressed:()=> _startAddNewTransaction(context),
-        child: Icon(Icons.add)),
+        child: const Icon(Icons.add)),
         );
   }
   
