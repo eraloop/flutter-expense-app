@@ -13,17 +13,32 @@ class NewTransaction extends StatefulWidget {
 
   late final Function addTx;
 
-  NewTransaction(this.addTx);
+  NewTransaction(this.addTx){}
 
   @override
-  State<NewTransaction> createState() => _NewTransactionState();
+  State<NewTransaction> createState(){
+    return _NewTransactionState();
+    }
 }
 
 class _NewTransactionState extends State<NewTransaction> {
   final _titleController = TextEditingController();
   final _amountController = TextEditingController();
-
   DateTime _selectedDate = DateTime(2021);
+  
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+  @override
+  void didUpdateWidget(covariant NewTransaction oldWidget) {
+    super.didUpdateWidget(oldWidget);
+  }
 
   void _submitData() {
     if (_amountController.text.isEmpty || _titleController.text.isEmpty) {
@@ -68,7 +83,7 @@ class _NewTransactionState extends State<NewTransaction> {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             TextField(
-              decoration: InputDecoration(labelText: 'Title'),
+              decoration: const InputDecoration(labelText: 'Title'),
               controller: _titleController,
               onSubmitted: (_) => _submitData(),
               // onChanged: (value){
@@ -76,7 +91,7 @@ class _NewTransactionState extends State<NewTransaction> {
               // },
             ),
             TextField(
-              decoration: InputDecoration(labelText: 'Amount'),
+              decoration:const InputDecoration(labelText: 'Amount'),
               controller: _amountController,
               keyboardType: TextInputType.number,
               onSubmitted: (_) => _submitData(),
@@ -89,7 +104,7 @@ class _NewTransactionState extends State<NewTransaction> {
               child: Row(
                 children: <Widget>[
                   Expanded(
-                      child: Text('\$${_selectedDate}' == '\$${DateTime(2021)}'
+                      child: Text('${_selectedDate}' == '\$${DateTime(2021)}'
                           ? 'No Date Selected'
                           : 'Picked Date: ${DateFormat.yMMMd().format(_selectedDate)}')),
 
@@ -101,7 +116,7 @@ class _NewTransactionState extends State<NewTransaction> {
                 color: Colors.purple,
                 textColor: Colors.white,
                 onPressed: _submitData,
-                child: Text('Add transaction'))
+                child: const Text('Add transaction'))
           ],
         ),
       ),
