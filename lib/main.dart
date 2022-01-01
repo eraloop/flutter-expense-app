@@ -5,8 +5,8 @@ import 'dart:io';
 
 import 'package:expenseapp/widgets/new_transaction.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/cupertino.dart';
+// import 'package:flutter/services.dart';
+// import 'package:flutter/cupertino.dart';
 
 
 import 'models/transaction.dart';
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'FExpense App',
+      title: 'Expense App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.purple,
@@ -97,7 +97,7 @@ class _HomepageState extends State<Homepage> {
         return GestureDetector(
           onTap:(){},
           child:NewTransaction( _addNewTransaction),
-          behavior: HitTestBehavior.opaque
+          // behavior: HitTestBehavior.opaque
         );
       },);
   }
