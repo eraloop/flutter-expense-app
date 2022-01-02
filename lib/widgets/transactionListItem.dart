@@ -6,8 +6,14 @@ import 'package:intl/intl.dart';
 import '../models/transaction.dart';
 
 class TransactionListItem extends StatefulWidget {
+
   const TransactionListItem(
-      {Key? key, required this.deleteTx, required this.transaction})
+      {
+      Key? key, 
+      required this.deleteTx, 
+      required this.transaction,
+      
+      })
       : super(key: key);
 
   final Function deleteTx;
@@ -26,12 +32,12 @@ class _TransactionListItemState extends State<TransactionListItem> {
     const availableColors = [
       Colors.red,
       Colors.black,
-      Colors.orange,
       Colors.blue,
-      Colors.purple
     ];
-  _bgColor = availableColors[Random().nextInt(5)];
+
+    _bgColor = availableColors[Random().nextInt(3)];
     super.initState();
+
   }
   @override
   Widget build(BuildContext context) {

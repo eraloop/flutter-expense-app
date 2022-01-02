@@ -49,7 +49,10 @@ class TransactionList extends StatelessWidget {
             //     }).toList(),
             //   ),
 
-            TransactionListItem(deleteTx: deleteTx, transaction: transactions)
+            TransactionListItem(
+              
+              deleteTx: deleteTx, 
+              transaction: transactions)
               );
   }
 }
